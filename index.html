@@ -1,0 +1,847 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gemini ရာထူးဝင်ခွင့်သင်တန်း</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, "Myanmar Text", sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 30px 20px;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 30px 25px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.header h1 {
+    color: #667eea;
+    font-size: 34px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.header-subtitle {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   USER AREA
+========================================= */
+
+.user-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.user-name {
+    color: #555;
+    font-weight: bold;
+}
+
+.public-badge {
+    display: inline-block;
+    background: #d4edda;
+    color: #155724;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.login-btn,
+.logout-btn {
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.login-btn {
+    background: #667eea;
+}
+
+.login-btn:hover {
+    background: #5568d9;
+}
+
+.logout-btn {
+    background: #dc3545;
+}
+
+.logout-btn:hover {
+    background: #bb2d3b;
+}
+
+
+/* =========================================
+   PUBLIC ACCESS INFORMATION
+========================================= */
+
+.access-info {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 22px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.access-info h3 {
+    color: #333;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.access-info p {
+    color: #666;
+    line-height: 1.7;
+    margin: 6px 0;
+}
+
+.public-text {
+    color: #28a745;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   LEVEL GRID
+========================================= */
+
+.levels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+/* =========================================
+   LEVEL CARD
+========================================= */
+
+.level {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.level:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+.level-number {
+    color: #667eea;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.level h2 {
+    color: #333;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.level-description {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.level-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.info-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #f0f2ff;
+    color: #667eea;
+}
+
+.status-public {
+    background: #d4edda;
+    color: #155724;
+}
+
+
+/* =========================================
+   PLAY BUTTON
+========================================= */
+
+.play {
+    width: 100%;
+    border: none;
+    padding: 13px 15px;
+    border-radius: 10px;
+    background: #667eea;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.play:hover {
+    background: #5568d9;
+}
+
+.play:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 18px 12px;
+    }
+
+    .header {
+        padding: 25px 18px;
+    }
+
+    .logo img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .header h1 {
+        font-size: 27px;
+    }
+
+    .header-subtitle {
+        font-size: 14px;
+    }
+
+    .levels {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .level {
+        padding: 22px;
+    }
+
+    .level h2 {
+        font-size: 18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="header">
+
+        <div class="logo">
+            <img
+                src="logo.jpg"
+                alt="Gemini Class Logo"
+            >
+        </div>
+
+        <h1>
+            Gemini ရာထူးဝင်ခွင့်သင်တန်း
+        </h1>
+
+        <p class="header-subtitle">
+            General Knowledge Challenge
+        </p>
+
+        <div
+            class="user-area"
+            id="userArea">
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         ACCESS INFORMATION
+    ====================================== -->
+
+    <div class="access-info">
+
+        <h3>
+            🎯 Quiz Access
+        </h3>
+
+        <p>
+            <span class="public-text">
+                🟢 Level 1–20
+            </span>
+            — Public Visitor Access
+        </p>
+
+        <p>
+            Level အားလုံးကို
+            <strong>Login / Register မလိုဘဲ</strong>
+            Visitor အနေဖြင့် ဝင်ရောက်ဖြေဆိုနိုင်ပါသည်။
+        </p>
+
+        <p>
+            Level တစ်ခုစီတွင်
+            <strong>50 Questions</strong>
+            ပါဝင်ပါသည်။
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         LEVELS
+    ====================================== -->
+
+    <div
+        class="levels"
+        id="levelsContainer">
+    </div>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <div class="footer">
+        Gemini ရာထူးဝင်ခွင့်သင်တန်း
+        © 2026
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   QUIZ SETTINGS
+===================================================== */
+
+const TOTAL_LEVELS = 20;
+
+const QUESTIONS_PER_LEVEL = 50;
+
+
+/* =====================================================
+   LEVEL TITLES
+===================================================== */
+
+const levelTitles = {
+
+    1:
+        "Gemini Class Level 1 - ASEAN",
+
+    2:
+        "Gemini Class Level 2 - United Nations",
+
+    3:
+        "Gemini Class Level 3 - MOFA ငယ်/ရေး Objectives Chapter 1",
+
+    4:
+        "Gemini Class Level 4 - MOFA ငယ်/ရေး Objectives Chapter 2",
+
+    5:
+        "Gemini Class Level 5 - MOFA ငယ်/ရေး Objectives Chapter 3",
+
+    6:
+        "Gemini Class Level 6 - MOFA ငယ်/ရေး Objectives Chapter 4",
+
+    7:
+        "Gemini Class Level 7 - MOFA ငယ်/ရေး Objectives Chapter 5",
+
+    8:
+        "Gemini Class Level 8 - MOFA ငယ်/ရေး Objectives Chapter 6",
+
+    9:
+        "Gemini Class Level 9 - MOFA ငယ်/ရေး Objectives Chapter 7",
+
+    10:
+        "Gemini Class Level 10 - MOFA ငယ်/ရေး Objectives Chapter 8",
+
+    11:
+        "Gemini Class Level 11 - MOFA ငယ်/ရေး Objectives Chapter 9",
+
+    12:
+        "Gemini Class Level 12 - MOFA ငယ်/ရေး Objectives Chapter 10",
+
+    13:
+        "Gemini Class Level 13 - MOFA ငယ်/ရေး English Chapter 1",
+
+    14:
+        "Gemini Class Level 14 - MOFA ငယ်/ရေး English Chapter 2",
+
+    15:
+        "Gemini Class Level 15 - MOFA ငယ်/ရေး English Chapter 3",
+
+    16:
+        "Gemini Class Level 16 - MOFA ငယ်/ရေး English Chapter 4",
+
+    17:
+        "Gemini Class Level 17 - MOFA ငယ်/ရေး English Chapter 5",
+
+    18:
+        "Gemini Class Level 18 - MOFA ငယ်/ရေး English Chapter 6",
+
+    19:
+        "Gemini Class Level 19 - MOFA ငယ်/ရေး English Chapter 7",
+
+    20:
+        "Gemini Class Level 20 - MOFA ငယ်/ရေး English Chapter 8"
+
+};
+
+
+/* =====================================================
+   GET CURRENT USER
+=====================================================
+
+   Login system ရှိနေသေးပါက
+   user name ကို header မှာပြရန်သာ အသုံးပြုသည်။
+
+   IMPORTANT:
+   Quiz access အတွက် currentUser ကို
+   လုံးဝ မစစ်ပါ။
+
+===================================================== */
+
+function getCurrentUser() {
+
+    try {
+
+        const user =
+            localStorage.getItem("currentUser");
+
+        if (!user) {
+            return null;
+        }
+
+        return JSON.parse(user);
+
+    } catch (error) {
+
+        console.error(
+            "Unable to read current user:",
+            error
+        );
+
+        return null;
+    }
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
+   UPDATE HEADER
+===================================================== */
+
+function updateHeader() {
+
+    const area =
+        document.getElementById("userArea");
+
+    const currentUser =
+        getCurrentUser();
+
+
+    /* ---------------------------------------------
+       GUEST
+    --------------------------------------------- */
+
+    if (!currentUser) {
+
+        area.innerHTML = `
+
+            <span class="user-name">
+                👤 You are playing as Guest
+            </span>
+
+            <span class="public-badge">
+                🌐 Level 1–20 Public Access
+            </span>
+
+            <button
+                class="login-btn"
+                onclick="goLogin()">
+
+                🔐 Login / Register
+
+            </button>
+
+        `;
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       LOGGED-IN USER
+    --------------------------------------------- */
+
+    const displayName =
+        currentUser.name ||
+        currentUser.email ||
+        "User";
+
+
+    area.innerHTML = `
+
+        <span class="user-name">
+            👤 Welcome,
+            ${escapeHTML(displayName)}
+        </span>
+
+        <span class="public-badge">
+            🌐 Level 1–20 Public Access
+        </span>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    `;
+}
+
+
+/* =====================================================
+   GET LEVEL TITLE
+===================================================== */
+
+function getLevelTitle(level) {
+
+    return (
+        levelTitles[level] ||
+        `Gemini Class Level ${level}`
+    );
+}
+
+
+/* =====================================================
+   GET LEVEL DESCRIPTION
+===================================================== */
+
+function getLevelDescription(level) {
+
+    if (level === 1) {
+
+        return `
+            ASEAN-related General Knowledge
+            and objective questions.
+        `;
+
+    }
+
+    if (level === 2) {
+
+        return `
+            United Nations-related
+            General Knowledge and objective questions.
+        `;
+
+    }
+
+    if (level >= 3 && level <= 12) {
+
+        const chapter =
+            level - 2;
+
+        return `
+            MOFA ငယ်/ရေး Objectives
+            — Chapter ${chapter}
+        `;
+
+    }
+
+    if (level >= 13 && level <= 20) {
+
+        const chapter =
+            level - 12;
+
+        return `
+            MOFA ငယ်/ရေး English
+            — Chapter ${chapter}
+        `;
+
+    }
+
+    return `
+        General Knowledge Quiz
+    `;
+}
+
+
+/* =====================================================
+   CREATE LEVEL CARDS
+===================================================== */
+
+function createLevels() {
+
+    const container =
+        document.getElementById(
+            "levelsContainer"
+        );
+
+    container.innerHTML = "";
+
+
+    for (
+        let level = 1;
+        level <= TOTAL_LEVELS;
+        level++
+    ) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "level";
+
+
+        card.innerHTML = `
+
+            <div class="level-number">
+                LEVEL ${level}
+            </div>
+
+            <h2>
+                ${escapeHTML(
+                    getLevelTitle(level)
+                )}
+            </h2>
+
+            <p class="level-description">
+                ${getLevelDescription(level)}
+            </p>
+
+            <div class="level-info">
+
+                <span class="info-badge">
+                    📝 ${QUESTIONS_PER_LEVEL} Questions
+                </span>
+
+                <span class="info-badge">
+                    🌐 Visitor Access
+                </span>
+
+                <span class="info-badge status-public">
+                    🟢 Available
+                </span>
+
+            </div>
+
+            <button
+                class="play"
+                onclick="startLevel(${level})">
+
+                ▶ Start Level ${level}
+
+            </button>
+
+        `;
+
+
+        container.appendChild(card);
+
+    }
+}
+
+
+/* =====================================================
+   START LEVEL
+===================================================== */
+
+function startLevel(level) {
+
+    /* ---------------------------------------------
+       Validate Level Number
+    --------------------------------------------- */
+
+    if (
+        !Number.isInteger(level) ||
+        level < 1 ||
+        level > TOTAL_LEVELS
+    ) {
+
+        alert(
+            "Invalid level."
+        );
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       PUBLIC ACCESS
+       
+       IMPORTANT:
+       No login check
+       No approval check
+       No levelAccess check
+       No 90% check
+    --------------------------------------------- */
+
+    window.location.href =
+        "quiz.html?level=" +
+        encodeURIComponent(level);
+}
+
+
+/* =====================================================
+   LOGIN / REGISTER
+===================================================== */
+
+function goLogin() {
+
+    window.location.href =
+        "login.html";
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+    localStorage.removeItem(
+        "currentUser"
+    );
+
+    window.location.reload();
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateHeader();
+
+        createLevels();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
